@@ -10,6 +10,6 @@ class Board (
     var title:String,
     var content:String,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id : Long? = null,
+    val id : Long? = null,
     var hit:Int = 0
 ) : BaseEntity()

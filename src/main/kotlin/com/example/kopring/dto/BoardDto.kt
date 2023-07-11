@@ -1,6 +1,6 @@
 package com.example.kopring.dto
 
 class BoardDto (
-    var title:String,
-    var content:String,
+    val title:String,
+    val content:String,
 )
