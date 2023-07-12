@@ -30,8 +30,8 @@ class BoardService (
         return BoardSearchDto(board.title, board.content, board.writer.name, board.hit)
     }
 
-    fun searchBoardListByFilter(title : String?) : List<BoardSearchDto>{
-        val boardList = boardRepository.findBoardByFiltering(title)
+    fun searchBoardListByFilter(title : String?, writer : String?) : List<BoardSearchDto>{
+        val boardList = boardRepository.findBoardByFiltering(title, writer)
         return boardList.map { board -> BoardSearchDto(board.title, board.content, board.writer.name, board.hit) }
     }
 }

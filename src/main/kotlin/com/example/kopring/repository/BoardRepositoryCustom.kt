@@ -4,5 +4,5 @@ import com.example.kopring.domain.Board
 
 interface BoardRepositoryCustom {
 
-    fun findBoardByFiltering(title : String?) : List<Board>
+    fun findBoardByFiltering(title : String?, writer : String?) : List<Board>
 }

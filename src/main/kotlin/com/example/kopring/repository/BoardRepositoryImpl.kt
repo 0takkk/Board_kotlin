@@ -12,15 +12,19 @@ class BoardRepositoryImpl(
     private val jpaQueryFactory: JPAQueryFactory
 ) : BoardRepositoryCustom {
 
-    override fun findBoardByFiltering(title: String?): List<Board> {
+    override fun findBoardByFiltering(title: String?, writer : String?): List<Board> {
         return jpaQueryFactory.selectFrom(board)
             .join(board.writer, member)
             .fetchJoin()
-            .where(titleContain(title))
+            .where(titleContain(title), writerContain(writer))
             .fetch()
     }
 
     private fun titleContain(title : String?) : BooleanExpression? {
         return title?.let {board.title.contains(title)}
+    }
+
+    private fun writerContain(writer : String?) : BooleanExpression? {
+        return writer?.let { board.writer.name.contains(writer)}
     }
 }
