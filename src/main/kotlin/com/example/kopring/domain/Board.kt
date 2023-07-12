@@ -13,4 +13,10 @@ class Board (
     @Column(name = "board_id")
     val id : Long = 0,
     var hit:Int = 0
-) : BaseEntity()
+) : BaseEntity() {
+
+    fun addHit(){
+        this.hit++
+    }
+
+}

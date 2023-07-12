@@ -1,5 +1,6 @@
 package com.example.kopring.common.exception
 
+import com.example.kopring.common.exception.board.BoardNotFoundException
 import com.example.kopring.common.exception.member.MemberDuplicationException
 import com.example.kopring.common.exception.member.MemberNotFoundException
 import com.example.kopring.common.response.ResponseService
@@ -24,6 +25,12 @@ class ExceptionAdvice(
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun memberNotFoundException() : Result{
         return responseService.getFailureResult(-101, "존재하지 않은 회원입니다.")
+    }
+
+    @ExceptionHandler(BoardNotFoundException::class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun boardNotFoundException() : Result{
+        return responseService.getFailureResult(-102, "존재하지 않은 게시글입니다.")
     }
 
 }
