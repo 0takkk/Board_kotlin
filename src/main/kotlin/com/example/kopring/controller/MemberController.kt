@@ -2,9 +2,12 @@ package com.example.kopring.controller
 
 import com.example.kopring.common.response.ResponseService
 import com.example.kopring.common.result.Result
+import com.example.kopring.common.result.SingleResult
 import com.example.kopring.dto.member.MemberJoinDto
+import com.example.kopring.dto.member.MemberSearchDto
 import com.example.kopring.service.MemberService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,5 +24,11 @@ class MemberController(
     fun join(@RequestBody requestDto : MemberJoinDto) : Result{
         memberService.join(requestDto)
         return responseService.getSuccessResult()
+    }
+
+    @GetMapping("/{id}")
+    fun searchMemberById(@PathVariable("id") id : Long) : SingleResult<MemberSearchDto>{
+        val requestDto = memberService.searchMemberById(id)
+        return responseService.getSingleResult(requestDto)
     }
 }

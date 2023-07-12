@@ -1,6 +1,7 @@
 package com.example.kopring.common.exception
 
 import com.example.kopring.common.exception.member.MemberDuplicationException
+import com.example.kopring.common.exception.member.MemberNotFoundException
 import com.example.kopring.common.response.ResponseService
 import com.example.kopring.common.result.Result
 import org.springframework.http.HttpStatus
@@ -14,8 +15,15 @@ class ExceptionAdvice(
 ) {
 
     @ExceptionHandler(MemberDuplicationException::class)
-    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun memberDuplicationException() : Result{
         return responseService.getFailureResult(-100, "중복된 아이디입니다.")
     }
+
+    @ExceptionHandler(MemberNotFoundException::class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun memberNotFoundException() : Result{
+        return responseService.getFailureResult(-101, "존재하지 않은 회원입니다.")
+    }
+
 }
