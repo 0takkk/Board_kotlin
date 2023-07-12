@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BoardRepository : JpaRepository<Board, Long>{
+interface BoardRepository : JpaRepository<Board, Long>, BoardRepositoryCustom{
 
     @Query("select b from Board b join fetch b.writer w where b.id = :id")
     fun findByIdWithWriter(id : Long) : Board?

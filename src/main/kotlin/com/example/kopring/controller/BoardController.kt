@@ -1,6 +1,7 @@
 package com.example.kopring.controller
 
 import com.example.kopring.common.response.ResponseService
+import com.example.kopring.common.result.ListResult
 import com.example.kopring.common.result.Result
 import com.example.kopring.common.result.SingleResult
 import com.example.kopring.dto.board.BoardDto
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -32,5 +34,10 @@ class BoardController (
         return responseService.getSingleResult(requestDto)
     }
 
+    @GetMapping
+    fun searchBoardListByFilter(@RequestParam(value = "title", required = false) title : String?) : ListResult<BoardSearchDto>{
+        val requestDto = boardService.searchBoardListByFilter(title)
+        return responseService.getListResult(requestDto)
+    }
 
 }

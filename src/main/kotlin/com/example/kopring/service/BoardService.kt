@@ -29,4 +29,9 @@ class BoardService (
         board.addHit()
         return BoardSearchDto(board.title, board.content, board.writer.name, board.hit)
     }
+
+    fun searchBoardListByFilter(title : String?) : List<BoardSearchDto>{
+        val boardList = boardRepository.findBoardByFiltering(title)
+        return boardList.map { board -> BoardSearchDto(board.title, board.content, board.writer.name, board.hit) }
+    }
 }
