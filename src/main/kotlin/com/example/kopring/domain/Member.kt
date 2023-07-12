@@ -7,11 +7,10 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Board (
-    var title:String,
-    var content:String,
+class Member (
+    var loginId : String,
+    var name : String,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_id")
-    val id : Long? = null,
-    var hit:Int = 0
+    @Column(name = "member_id")
+    val id : Long? = null
 ) : BaseEntity()

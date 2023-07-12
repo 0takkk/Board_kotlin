@@ -1,4 +1,4 @@
-package com.example.kopring.dto
+package com.example.kopring.dto.board
 
 class BoardDto (
     val title:String,

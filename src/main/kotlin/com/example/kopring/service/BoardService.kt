@@ -1,7 +1,7 @@
 package com.example.kopring.service
 
 import com.example.kopring.domain.Board
-import com.example.kopring.dto.BoardDto
+import com.example.kopring.dto.board.BoardDto
 import com.example.kopring.repository.BoardRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
